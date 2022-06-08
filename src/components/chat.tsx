@@ -16,7 +16,7 @@ const Chat: React.FC = () => {
     const [startChatId, setStartChatId] = React.useState(0);
     const [loading, setLoading] = React.useState(true);
     const [chatLoadRef, inView] = useInView();
-    const chatListRef = React.useRef<HTMLUListElement>(null)
+    const chatListRef = React.useRef<HTMLUListElement>(null);
 
     React.useEffect(() => {
         (async () => {
@@ -28,10 +28,21 @@ const Chat: React.FC = () => {
 
             setStartChatId(() => chatData[0].id);
             setChatItemEl(() => chatData.map(chat => <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />));
-            chatListRef.current?.scrollTo({
-                top: chatListRef.current.scrollHeight
-            });
-            setLoading(false);
+
+            // 리렌더링 시간 때문에 잠시 딜레이
+            await (() => new Promise((resolve) => {
+                setTimeout(() => {
+                    // 첫 렌더링시에는 무조건 스크롤이 바닥에 붙어있어야 함
+                    chatListRef.current?.scrollTo({
+                        top: chatListRef.current.scrollHeight
+                    });
+                    resolve(true);
+                }, 1);
+            }))();
+            // 스크롤 변경도 딜레이 필요
+            setTimeout(() => {
+                setLoading(false);
+            }, 1);
         })();
     }, []);
 
@@ -50,14 +61,27 @@ const Chat: React.FC = () => {
             }
 
             setStartChatId(() => chatData[0].id);
+            const prevScrollY = Number(chatListRef.current?.scrollTop);
+            const prevHeight = Number(chatListRef.current?.scrollHeight);
             setChatItemEl((prev) => [
                 ...chatData.map(chat => <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />),
                 ...prev
             ]);
-            chatListRef.current?.scrollTo({
-                top: chatListRef.current.scrollHeight
-            });
-            setLoading(false);
+
+            // 리렌더링 시간 때문에 잠시 딜레이
+            await (() => new Promise((resolve) => {
+                setTimeout(() => {
+                    // 원래 스크롤 위치로 이동
+                    chatListRef.current?.scrollTo({
+                        top: chatListRef.current.scrollHeight - prevHeight + prevScrollY
+                    });
+                    resolve(true);
+                }, 1);
+            }))();
+            // 리로딩 쿨타임
+            setTimeout(() => {
+                setLoading(false);
+            }, 200);
         })();
     }, [inView, loading]);
     
