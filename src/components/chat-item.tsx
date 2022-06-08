@@ -8,7 +8,7 @@ interface propsType {
 
 const ChatItem: React.FC<propsType> = (props: propsType) => {
     return (
-        <div className='chat--item'>
+        <li className='chat--item'>
             <div className='chat--item--profile'>
                 <span>{props.guestId}</span>
             </div>
@@ -19,7 +19,7 @@ const ChatItem: React.FC<propsType> = (props: propsType) => {
                 </div>
                 <div className='chat--item--content'>{props.content}</div>
             </div>
-        </div>
+        </li>
     );
 }
 export default ChatItem;

@@ -1,3 +1,14 @@
+/* chat section start */
+.chat {
+    background-color: var(--level-2);
+}
+.chat--item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+/* chat section end */
+/* chat item start */
 .chat--item {
     display: flex;
     align-items: center;
@@ -22,6 +33,7 @@
     background-color: #fff;
     color: black;
     font-size: 24px;
+    user-select: none;
 }
 .chat--item--content-wrap {
     flex: 1;
@@ -33,7 +45,6 @@
 }
 .chat--item--nickname {
     color: var(--text);
-    font-weight: bold;
 }
 .chat--item--date {
     color: var(--text-level-2);
@@ -43,3 +54,4 @@
 .chat--item--content {
     color: var(--text-level-1);
 }
+/* chat item end */
