@@ -1,8 +1,16 @@
 /* chat section start */
 .chat {
+    height: 100%;
     background-color: var(--level-2);
 }
+.chat--load {
+    width: 100%;
+    padding: 25px;
+    background-color: var(--level-1);
+}
 .chat--item-list {
+    height: 100%;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
