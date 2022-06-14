@@ -140,7 +140,7 @@ const Chat: React.FC<propsType> = (props: propsType) => {
                 {startChatId > 1 || startChatId == 0? <li className='chat--load' ref={chatLoadRef}></li>: null}
                 {chatItemEl}
             </ul>
-            <form onSubmit={sendChat}>
+            <form className='chat--input' onSubmit={sendChat}>
                 <input
                     ref={chatInputRef}
                     name="chat-content"
