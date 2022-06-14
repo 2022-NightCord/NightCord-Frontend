@@ -6,7 +6,8 @@ import '../style/chat.css';
 import { Socket } from 'socket.io-client';
 
 interface propsType {
-    socket: Socket
+    socket: Socket,
+    guestId: number
 }
 
 interface chatType {
@@ -23,35 +24,15 @@ const Chat: React.FC<propsType> = (props: propsType) => {
     const [chatLoadRef, inView] = useInView();
     const chatListRef = React.useRef<HTMLUListElement>(null);
     const chatInputRef = React.useRef<HTMLInputElement>(null);
-    const [inputChatContent, setInputChatContent] = React.useState<string>('');
 
     React.useEffect(() => {
-        (async () => {
-            const chatData: chatType[] = (await getChatList()).data.reverse();
-            // 채팅 목록이 없으면
-            if (!chatData.length) {
-                return setLoading(false);
-            }
-
-            setStartChatId(() => chatData[0].id);
-            setChatItemEl(() => chatData.map(chat => <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />));
-
-            // 리렌더링 시간 때문에 잠시 딜레이
-            await (() => new Promise((resolve) => {
-                setTimeout(() => {
-                    // 첫 렌더링시에는 무조건 스크롤이 바닥에 붙어있어야 함
-                    chatListRef.current?.scrollTo({
-                        top: chatListRef.current.scrollHeight
-                    });
-                    resolve(true);
-                }, 1);
-            }))();
-            // 스크롤 변경도 딜레이 필요
-            setTimeout(() => {
-                setLoading(false);
-            }, 1);
-        })();
+        init();
     }, []);
+
+    const init = () => {
+        reciveChat();
+        InitChatList();
+    }
 
     React.useEffect(() => {
         // 스크롤이 아직 남아있거나 로딩중이라면
@@ -91,9 +72,54 @@ const Chat: React.FC<propsType> = (props: propsType) => {
             }, 200);
         })();
     }, [inView, loading]);
+
+    const InitChatList = async () => {
+        const chatData: chatType[] = (await getChatList()).data.reverse();
+            // 채팅 목록이 없으면
+            if (!chatData.length) {
+                return setLoading(false);
+            }
+
+            setStartChatId(() => chatData[0].id);
+            setChatItemEl(() => chatData.map(chat => <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />));
+
+            // 리렌더링 시간 때문에 잠시 딜레이
+            await (() => new Promise((resolve) => {
+                setTimeout(() => {
+                    // 첫 렌더링시에는 무조건 스크롤이 바닥에 붙어있어야 함
+                    chatListRef.current?.scrollTo({
+                        top: chatListRef.current.scrollHeight
+                    });
+                    resolve(true);
+                }, 1);
+            }))();
+            // 스크롤 변경도 딜레이 필요
+            setTimeout(() => {
+                setLoading(false);
+            }, 1);
+    }
     
     const getChatList = (startChatId: number = 0): AxiosPromise<chatType[]> => {
         return axios.get(`http://localhost:3000/api/chat?startChatId=${startChatId}`); 
+    }
+
+    const reciveChat = () => {
+        props.socket.on('chat', async (chat: chatType) => {
+            console.log(chat)
+            setChatItemEl((prev) => [
+                ...prev,
+                <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />
+            ]);
+            // 리렌더링 시간 때문에 잠시 딜레이
+            setTimeout(() => {
+                // 스크롤 위치 이동
+                chatListRef.current?.scrollTo({
+                    top: (chatListRef.current.scrollTop == chatListRef.current.scrollHeight)?
+                        chatListRef.current.scrollTop:
+                        chatListRef.current.scrollHeight
+                });
+            }, 1);
+        });
     }
 
     const sendChat = (event: React.FormEvent<HTMLFormElement>) => {
@@ -102,9 +128,8 @@ const Chat: React.FC<propsType> = (props: propsType) => {
         if (typeof chatContent == 'undefined') {
             return alert('채팅을 보내는 중에 문제가 발생하였습니다.');
         }
-        setInputChatContent(() => chatContent);
         props.socket.emit('chat', {
-            guestId: 1,
+            guestId: props.guestId,
             content: chatContent
         });
     }
