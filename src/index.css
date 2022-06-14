@@ -23,7 +23,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App{
+li {
+    list-style: none;
+}
+
+.App {
     --black: #000;
     --gray: #c0c0c0;
     --light_gray:#aaa;
@@ -42,7 +46,8 @@ body {
 
     --chat-input-bar: #ebedef;
 }
-.App.dark{
+
+.App.dark {
     --black: #000;
     --gray: #525252;
     --light_gray:#aaa;
@@ -56,8 +61,21 @@ body {
 
     --level-1: #2f3136;
     --level-2: #36393f;
+    --level-3: #42464d;
 
     --hover: rgba(128, 128, 128, .15);
 
     --chat-input-bar: #40444b;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--level-1);
+    border-radius: 50px;
+    overflow: hidden;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: var(--background);
+    background-clip: padding-box;
+    border-radius: 50px;
 }

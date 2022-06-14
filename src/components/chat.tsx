@@ -124,19 +124,20 @@ const Chat: React.FC<propsType> = (props: propsType) => {
 
     const sendChat = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const chatContent = chatInputRef.current?.value;
-        if (typeof chatContent == 'undefined') {
+        if (chatInputRef.current?.value) {
+            props.socket.emit('chat', {
+                guestId: props.guestId,
+                content: chatInputRef.current.value
+            });
+            chatInputRef.current.value = '';
+        } else {
             return alert('채팅을 보내는 중에 문제가 발생하였습니다.');
         }
-        props.socket.emit('chat', {
-            guestId: props.guestId,
-            content: chatContent
-        });
     }
 
     return (
         <section className='chat'>
-            <ul className='chat--item-list' ref={chatListRef}>
+            <ul className='chat--item-list scroll-bar' ref={chatListRef}>
                 {startChatId > 1 || startChatId == 0? <li className='chat--load' ref={chatLoadRef}></li>: null}
                 {chatItemEl}
             </ul>

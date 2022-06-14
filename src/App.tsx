@@ -25,11 +25,12 @@ function App() {
             localStorage.setItem('guestId', JSON.stringify(newGuestId));
             setGuestId(() => newGuestId);
         })();
-    }, [])
+    }, []);
 
     const getGuestId = async () => {
         return Number((await axios.post('http://localhost:3000/api/chat/user')).data.newGuestId);
     }
+    
     return (
         <div className="App dark">
             <Header/>
