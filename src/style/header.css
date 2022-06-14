@@ -1,0 +1,55 @@
+.App {
+    width: 100%;
+    display: flex 1 1;
+}
+
+.header {
+    display: flex;
+    background-color:#36393f;
+    width: 100%;
+    max-width: fill-available;
+    margin-left: 72px;
+    height: 48px;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    box-shadow: 0px 2px 3px black;
+}
+
+.header--title {
+    color: white;
+    display: inline-block;
+}
+
+.header--left {
+    display: flex; 
+    align-items: center;
+}
+
+.header--right {
+    display: flex;
+    align-items: center;
+}
+
+.header--left .header--hash {
+    /* margin: 0px 20px 0px 5px; */
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.header--right * {
+    margin: 0px 8px
+}
+
+.header--input {
+    background-color: #212226;
+    border-color: #212226;
+    height: 20px;
+    width: 120px;
+    border-radius: 4px;
+}
+
+
+.header--input:focus { 
+    outline: none; 
+}
