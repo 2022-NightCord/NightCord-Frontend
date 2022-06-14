@@ -9,7 +9,7 @@ import { ReactComponent as Help } from "../svg/help.svg";
 
 import "../style/header.css";
 
-const Header: React.FC = () => {
+const Header: React.FC<{}> = () => {
 
     const chatroom: string = "일반"
 

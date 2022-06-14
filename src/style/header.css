@@ -1,10 +1,19 @@
+.App {
+    width: 100%;
+    display: flex 1 1;
+}
+
 .header {
     display: flex;
     background-color:#36393f;
-    width: auto;
+    width: 100%;
+    max-width: fill-available;
+    margin-left: 72px;
     height: 48px;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    box-shadow: 0px 2px 3px black;
 }
 
 .header--title {
