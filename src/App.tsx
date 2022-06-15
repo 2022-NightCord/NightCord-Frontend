@@ -28,12 +28,11 @@ function App() {
 
             socket.emit('getGuestId', Number(newGuestId));
         })();
-    }, [])
+    }, []);
 
     const getGuestId = async() => {
         return Number((await axios.post('http://localhost:3000/api/chat/user')).data.newGuestId);
     }
-
     return (
         <div className="App dark">
             <Header/>
