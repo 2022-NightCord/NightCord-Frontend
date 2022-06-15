@@ -31,6 +31,19 @@ li {
     --black: #000;
     --gray: #c0c0c0;
     --light_gray:#aaa;
+    --green:#3ba55d;
+    
+    --gray-icon: #74778d;
+    --blue-icon: #5865f2;
+    --light-blue-icon: #3ba3e8;
+    --emerald-icon: #3ab8ba;
+    --green-icon: #43b581;
+    --light-green-icon: #88c800;
+    --yellow-icon: #faa61a;
+    --orange-icon: #fa7a0b;
+    --red-icon: #f04747;
+    --pink-icon: #f35ab9;
+    --purple-icon: #9d7bd5;
     
     --accent: #5865f2;
     --text: #202124;
@@ -51,6 +64,14 @@ li {
     --black: #000;
     --gray: #525252;
     --light_gray:#aaa;
+    --green:#3ba55d;
+
+    --gray-icon: #747b8b;
+    --blue-icon: #5865f2;
+    --green-icon: #3da45d;
+    --light-green-icon: #88c800;
+    --yellow-icon: #f9a61b;
+    --red-icon: #ec4444;
 
     --accent: #5865f2;
     --text: #e8eaed;

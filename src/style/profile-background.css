@@ -1,0 +1,46 @@
+.chat--item--profile-blue {
+    background-color: var(--accent);
+}
+
+.chat--item--profile-red {
+    background-color: var(--red-icon);
+}
+
+.chat--item--profile-yellow {
+    background-color: var(--yellow-icon);
+}
+
+.chat--item--profile-green {
+    background-color: var(--green-icon);
+}
+
+.chat--item--profile-red {
+    background-color: var(--red-icon);
+}
+
+.chat--item--profile-gray {
+    background-color: var(--gray-icon);
+}
+
+.chat--item--profile-light-blue {
+    background-color: var(--light-blue-icon);
+}
+.chat--item--profile-yellow {
+    background-color: var(--yellow-icon);
+}
+
+.chat--item--profile-orange {
+    background-color: var(--orange-icon);
+}
+
+.chat--item--profile-pink {
+    background-color: var(--pink-icon);
+}
+
+.chat--item--profile-purple {
+    background-color: var(--purple-icon);
+}
+
+.chat--item--profile-light-green {
+    background-color: var(--light-green-icon);
+}

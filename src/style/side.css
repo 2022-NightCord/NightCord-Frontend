@@ -51,12 +51,12 @@
 
 .change--blue > .side--icon:hover {
     border-radius: 17px;
-    background-color: #5865f2;
+    background-color: var(--accent);
 }
 
 .change--green > .side--icon:hover {
     border-radius: 17px;
-    background-color: #3ba55d;
+    background-color: var(--green);
 }
 
 

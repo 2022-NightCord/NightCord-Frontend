@@ -7,7 +7,7 @@
     display: flex;
     background-color:#36393f;
     width: 100%;
-    max-width: fill-available;
+    max-width: stretch;
     margin-left: 72px;
     height: 48px;
     align-items: center;

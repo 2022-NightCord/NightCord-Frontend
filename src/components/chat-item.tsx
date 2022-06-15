@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactComponent as Discord } from "../svg/discord.svg";
 
 interface propsType {
     guestId: number,
@@ -7,10 +8,27 @@ interface propsType {
 }
 
 const ChatItem: React.FC<propsType> = (props: propsType) => {
+
+    const findPersonalColor = (guestId: number): string => {
+        switch (guestId % 5) {
+            case 0:
+                return 'chat--item--profile-gray';
+            case 1:
+                return 'chat--item--profile-blue';
+            case 2:
+                return 'chat--item--profile-green';
+            case 3:
+                return 'chat--item--profile-yellow';
+            case 4:
+                return 'chat--item--profile-red';
+        } 
+        return 'chat--item--profile-blue';
+    }
+
     return (
         <li className='chat--item'>
-            <div className='chat--item--profile'>
-                <span>{props.guestId}</span>
+            <div className={findPersonalColor(props.guestId)} id="chat--item--profile">
+                <Discord className="side--icon--discord" fill="#ffffff"></Discord>
             </div>
             <div className='chat--item--content-wrap'>
                 <div className='chat--item--header'>

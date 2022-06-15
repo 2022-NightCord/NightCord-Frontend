@@ -1,0 +1,80 @@
+.now-user {
+    position: fixed;
+    width: 240px;
+    height: 100%;
+    right: 0;
+    margin-top: 1.5px;
+    background-color: var(--level-1);
+}
+
+.count-users {
+    color: var(--text-level-1);
+    font-size: 12px;
+    margin: 20px 0px 0px 15px
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px 0px 7px; 
+    gap: 3px;
+}
+
+.user--personal {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    gap: 8px;
+    padding: 4px 0px 4px 8px;
+}
+
+.user--personal:hover {
+    background-color: #42474d;
+}
+
+.user--personal > span {
+    color: var(--text-level-1);
+}
+
+#user--personal--icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+}
+
+#user--personal--icon > svg {
+    width: 25px;
+    margin-left: 1.5px;
+}
+
+#user--personal--icon > span {
+    color: black;
+    font-size: 24px;
+    user-select: none;
+}
+
+.user--personal--icon--online--gray {
+    position: absolute;
+    background-color: var(--level-1);
+    width: 14px;
+    height: 14px;
+    border-radius: 12px;
+    top: 57%;
+    left: 63%;
+    z-index: 0;
+}
+
+.user--personal--icon--online {
+    position: absolute;
+    background-color: var(--green);
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    top: 65%;
+    left: 70%;
+    z-index: 1;
+}

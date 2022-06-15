@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import ChatItem from './chat-item';
 import axios, { AxiosPromise } from 'axios';
 import '../style/chat.css';
+import '../style/profile-background.css'
 import { Socket } from 'socket.io-client';
 
 interface propsType {

@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 import Header from './components/header'
 import Side from './components/side';
 import Main from './components/main';
-import User from './components/user';
+import User from './components/now-user';
 
 const socket = io('http://localhost:3000', {
     transports: ['websocket']
@@ -38,7 +38,6 @@ function App() {
             <Header/>
             <Side/>
             <Main socket={socket} guestId={guestId} />
-            <User socket={socket}/>
         </div>
     );
 }
