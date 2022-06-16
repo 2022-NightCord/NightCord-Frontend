@@ -147,7 +147,8 @@ const Chat: React.FC<propsType> = (props: propsType) => {
                     ref={chatInputRef}
                     name="chat-content"
                     type="text"
-                    placeholder="보낼 내용 입력"
+                    placeholder="#일반에 메세지 보내기"
+                    autoComplete="off"
                     required
                 />
                 <button>보내기</button>

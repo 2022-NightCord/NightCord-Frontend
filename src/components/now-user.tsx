@@ -17,7 +17,6 @@ const User: React.FC<propsType> = (props: propsType) => {
         props.socket.on('nowClients', (res) => {
             // 현재 접속한 클라이언트 Guestid 배열
             setNowClients(res);
-            // console.log(res);
         })
         props.socket.on('users', (res: number) => {
             // 현재 접속한 유저 수 
@@ -25,8 +24,7 @@ const User: React.FC<propsType> = (props: propsType) => {
         })
     }, []);
 
-
-    const Users = nowClients.map((Guestid) => {
+    const Users = nowClients.map((Guestid, i) => {
         const findPersonalColor = (guestId: number): string => {
             switch (guestId % 5) {
                 case 0:
@@ -43,7 +41,7 @@ const User: React.FC<propsType> = (props: propsType) => {
             return 'chat--item--profile-blue';
         }
         return (
-            <div className="user--personal">
+            <div className="user--personal" key={i}>
                 <div className={findPersonalColor(Guestid)} id="user--personal--icon">
                     <Discord className="side--icon--discord" fill="#ffffff"></Discord>
                     <div className="user--personal--icon--online--gray"></div>
