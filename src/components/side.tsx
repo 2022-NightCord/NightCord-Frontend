@@ -26,7 +26,6 @@ const Side: React.FC<{}> = () => {
                     <div className="side--icon">
                         <Search className="side--icon--discord" fill="#469d63"></Search>
                     </div>
-                    <div className="side--bar--divide"></div>
                 </div>
             </div>
             <ChatRoomList />

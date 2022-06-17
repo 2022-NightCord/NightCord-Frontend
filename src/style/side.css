@@ -3,7 +3,7 @@
     position: fixed;
     width: 310px;
     height: 100%;
-    background-color: #212226;
+    background-color: var(--background);
 }
 
 .server-list {

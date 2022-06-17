@@ -1,9 +1,7 @@
 .now-user {
-    position: fixed;
-    width: 240px;
+    min-width: 240px;
     height: 100%;
     right: 0;
-    margin-top: 1.5px;
     background-color: var(--level-1);
 }
 
