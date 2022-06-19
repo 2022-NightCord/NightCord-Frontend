@@ -52,6 +52,7 @@ li {
 
     --background: #e3e5e8;
   
+    --level-0: #ebedef;
     --level-1: #f2f3f5;
     --level-2: #ffffff;
     --level-3: #d1d5d9;
@@ -83,6 +84,7 @@ li {
     
     --background: #202225;
     
+    --level-0: #292b2f;
     --level-1: #2f3136;
     --level-2: #36393f;
     --level-3: #42464d;

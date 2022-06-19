@@ -5,8 +5,13 @@ import { ReactComponent as Search } from "../svg/search.svg";
 
 import "../style/side.css";
 import ChatRoomList from "./chat-room-list";
+import ProfileInfo from "./profile-info";
 
-const Side: React.FC<{}> = () => {
+interface propsType {
+    guestId: number
+}
+
+const Side: React.FC<propsType> = (props: propsType) => {
     return (
         <div className="side-bar">
             <div className="server-list">
@@ -28,7 +33,10 @@ const Side: React.FC<{}> = () => {
                     </div>
                 </div>
             </div>
-            <ChatRoomList />
+            <div className="sub-side-bar">
+                <ChatRoomList />
+                <ProfileInfo guestId={props.guestId} />
+            </div>
         </div>
     )
 

@@ -16,7 +16,7 @@ function App() {
     const [guestId, setGuestId] = React.useState<number>(0);
 
     React.useEffect(() => {
-        // themeInit();
+        themeInit();
         (async() => {
             const loadGuestId = localStorage.getItem('guestId');
             // 만약 기존 데이터가 있다면
@@ -40,26 +40,26 @@ function App() {
         const prevTheme = localStorage.getItem('dark_theme');
         // 기존 테마 설정이 있다면
         if (prevTheme !== null) {
-            return setDarkTheme(Boolean(prevTheme));
+            return setDarkTheme(Boolean(Number(prevTheme)));
         }
 
         // 기존 테마 설정이 없다면 현재 디바이스의 기본 테마 설정을 가져옴
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         if (prefersDarkScheme.matches) {
-            localStorage.setItem('dark_theme', 'true');
+            localStorage.setItem('dark_theme', '1');
             setDarkTheme(true);
         } else {
-            localStorage.setItem('dark_theme', 'false');
+            localStorage.setItem('dark_theme', '0');
             setDarkTheme(false);
         }
     }
 
     const toggleTheme = () => {
         if (darkTheme) {
-            localStorage.setItem('dark_theme', 'false');
+            localStorage.setItem('dark_theme', '0');
             setDarkTheme(false);
         } else {
-            localStorage.setItem('dark_theme', 'true');
+            localStorage.setItem('dark_theme', '1');
             setDarkTheme(true);
         }
     }
@@ -67,7 +67,7 @@ function App() {
     return (
         <div className={`App${darkTheme? ' dark': ''}`}>
             <Header toggleTheme={toggleTheme}/>
-            <Side/>
+            <Side guestId={guestId} />
             <Main socket={socket} guestId={guestId} />
         </div>
     );
