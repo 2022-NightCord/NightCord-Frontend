@@ -12,7 +12,7 @@ const Side: React.FC<{}> = () => {
             <div className="server-list">
                 <div className="change--blue">
                     <div className="side--icon">
-                        <Discord className="side--icon--discord" fill="#ffffff"></Discord>
+                        <Discord className="side--icon-home side--icon--discord"></Discord>
                     </div>
                     <div className="side--bar--divide"></div>
                     <div className="side--icon">

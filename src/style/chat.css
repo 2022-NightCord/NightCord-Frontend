@@ -19,9 +19,6 @@
     flex-direction: column;
     gap: 10px;
 }
-.chat--input {
-    flex: 1;
-}
 /* chat section end */
 /* chat item start */
 .chat--item {
@@ -29,6 +26,9 @@
     align-items: center;
     width: 100%;
     padding: 0 10px;
+}
+.chat--item:first-child {
+    margin-top: auto;
 }
 .chat--item:hover {
     background-color: var(--hover);
@@ -74,16 +74,16 @@
     color: var(--text-level-1);
     word-break: break-all;
 }
+/* chat item end */
 
 .chat--input {
     display: flex;
     align-items: center;
     width: 100%;
     max-width: stretch;
-    margin: 0px 5px 20px 15px;
+    margin: 15px;
     gap: 10px;
 }
-/* chat item end */
 
 .chat--input > input{
     background-color: var(--chat-input-bar);

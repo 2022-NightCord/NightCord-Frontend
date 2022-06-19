@@ -46,6 +46,7 @@ const Chat: React.FC<propsType> = (props: propsType) => {
             const chatData: chatType[] = (await getChatList(startChatId)).data.reverse();
             // 채팅 목록이 없으면
             if (!chatData.length) {
+                setStartChatId(1);
                 return setLoading(false);
             }
 
@@ -106,7 +107,6 @@ const Chat: React.FC<propsType> = (props: propsType) => {
 
     const reciveChat = () => {
         props.socket.on('chat', async (chat: chatType) => {
-            console.log(chat)
             setChatItemEl((prev) => [
                 ...prev,
                 <ChatItem key={chat.id} {...chat} date={new Date(chat.date)} />

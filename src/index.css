@@ -55,9 +55,11 @@ li {
     --level-1: #f2f3f5;
     --level-2: #ffffff;
     --level-3: #d1d5d9;
-
+    
     --hover: rgba(0, 0, 0, .05);
-
+    
+    --button: #2e3338;
+    
     --chat-input-bar: #ebedef;
 }
 
@@ -80,24 +82,28 @@ li {
     --text-level-2: #8b8f94;
     
     --background: #202225;
-
+    
     --level-1: #2f3136;
     --level-2: #36393f;
     --level-3: #42464d;
-
+    
     --hover: rgba(128, 128, 128, .15);
-
+    
+    --button: #b9bbbe;
+    
     --chat-input-bar: #40444b;
 }
 
 .scroll-bar::-webkit-scrollbar {
-    width: 8px;
+    width: 16px;
     background-color: var(--level-1);
     border-radius: 50px;
     overflow: hidden;
+    border: 4px solid var(--level-2);
 }
 .scroll-bar::-webkit-scrollbar-thumb {
     background-color: var(--background);
     background-clip: padding-box;
     border-radius: 50px;
+    border: 4px solid transparent;
 }

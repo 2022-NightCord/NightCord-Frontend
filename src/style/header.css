@@ -38,8 +38,9 @@
     margin-right: 5px;
 }
 
-.header--right * {
-    margin: 0px 8px
+.header--right > * {
+    margin: 0px 8px;
+    fill: var(--button);
 }
 
 .header--input {

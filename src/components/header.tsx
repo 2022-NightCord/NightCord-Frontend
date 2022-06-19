@@ -6,10 +6,15 @@ import { ReactComponent as Pin } from "../svg/pin.svg";
 import { ReactComponent as Member } from "../svg/member.svg";
 import { ReactComponent as Letter } from "../svg/letter.svg";
 import { ReactComponent as Help } from "../svg/help.svg";
+import { ReactComponent as Theme } from "../svg/theme.svg";
 
 import "../style/header.css";
 
-const Header: React.FC<{}> = () => {
+interface propsType {
+    toggleTheme: VoidFunction
+}
+
+const Header: React.FC<propsType> = (props: propsType) => {
 
     const chatroom: string = "일반"
 
@@ -20,13 +25,14 @@ const Header: React.FC<{}> = () => {
                 <div className="header--title">{ chatroom }</div>
             </div>
             <div className="header--right">
-                <HashMassage className="header--hashmessage" fill="#babbbf"></HashMassage>
-                <Alarm className="header-alarm" fill="#babbbf"></Alarm>
-                <Pin className="header--pin" fill="#babbbf"></Pin>
-                <Member className="header--member" fill="#babbbf"></Member>
+                <Theme className="header--hashmessage" onClick={props.toggleTheme}></Theme>
+                <HashMassage className="header--hashmessage"></HashMassage>
+                <Alarm className="header-alarm"></Alarm>
+                <Pin className="header--pin"></Pin>
+                <Member className="header--member"></Member>
                 <input className="header--input" placeholder="검색하기"></input>
-                <Letter className="header--letter" fill="#babbbf"></Letter>
-                <Help className="header--help" fill="#babbbf"></Help>
+                <Letter className="header--letter"></Letter>
+                <Help className="header--help"></Help>
             </div>
         </div>
 

@@ -23,14 +23,14 @@
 .side--icon {
     width: 48px;
     height: 48px;  
-    background-color: #363940;  
+    background-color: var(--level-2);
     text-align: center;
-    border-radius: 300px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
-    transition: background-color .15s ease-out, border-radius .2s ease;
+    transition: .2s ease;
 }
 
 .change--blue {
@@ -40,13 +40,23 @@
 .side--bar--divide {
     width: 32px;
     height: 2px;
-    background-color: #363940;
+    background-color: var(--level-3);
     margin: 5px;
 }
 
+.side--icon-home {
+    fill: var(--text);
+}
+
 .side--icon > span {
-    color: white;
+    color: var(--text);
     font-size: 10px;
+}
+
+.side--icon:hover
+:is( svg, span) {
+    color: white;
+    fill: white;
 }
 
 .change--blue > .side--icon:hover {
